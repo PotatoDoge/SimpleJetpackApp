@@ -13,8 +13,8 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel() {
     // Input state
-    var emailInput by mutableStateOf("test@app.com")
-    var passwordInput by mutableStateOf("password")
+    var emailInput by mutableStateOf("")
+    var passwordInput by mutableStateOf("")
 
     // UI State and Feedback
     var isLoading by mutableStateOf(false)

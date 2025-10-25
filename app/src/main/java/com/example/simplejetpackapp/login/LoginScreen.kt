@@ -1,5 +1,6 @@
 package com.example.simplejetpackapp.login
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -69,6 +70,9 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(64.dp)) // Space from top
 
+            Image(painter = painterResource(id = R.drawable.logo), contentDescription = "Logo", modifier = Modifier.size(80.dp))
+            Spacer(modifier = Modifier.height(16.dp))
+
             // --- HEADER ---
             Text(
                 text = "Welcome back!",
@@ -83,7 +87,7 @@ fun LoginScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
-            Spacer(modifier = Modifier.height(48.dp))
+            Spacer(modifier = Modifier.height(28.dp))
 
             // --- FORM FIELDS ---
             LoginTextField(
@@ -143,7 +147,7 @@ fun LoginScreen(
                 onClick = { viewModel.attemptLogin() },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(56.dp),
+                    .height(42.dp),
                 enabled = !isLoading,
                 shape = MaterialTheme.shapes.medium
             ) {
@@ -171,7 +175,6 @@ fun LoginScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             // --- SOCIAL LOGINS ---
-            // These require the drawable files (ic_google_logo.xml, ic_microsoft_logo.xml)
             SocialSignInButton(
                 text = "Continue with Google",
                 icon = painterResource(id = R.drawable.ic_google_logo),
@@ -207,7 +210,7 @@ fun LoginScreen(
 }
 
 /**
- * Creates the "Don't have an account? Sign Up" clickable text.
+ * Creates the "Don\'t have an account? Sign Up" clickable text.
  */
 @Composable
 private fun SignUpLink(
@@ -216,9 +219,9 @@ private fun SignUpLink(
 ) {
     // Create a rich text string
     val annotatedString = buildAnnotatedString {
-        // "Don't have an account? " (normal text)
+        // "Don\'t have an account? " (normal text)
         withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onSurfaceVariant)) {
-            append("Don't have an account? ")
+            append("Don\'t have an account? ")
         }
 
         // "Sign Up" (clickable text)

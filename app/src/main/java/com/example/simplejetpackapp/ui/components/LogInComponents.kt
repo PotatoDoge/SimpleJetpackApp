@@ -67,8 +67,9 @@ fun LoginTextField(
         isError = isError,
         singleLine = true,
         enabled = enabled,
-        modifier = modifier.fillMaxWidth(),
-        shape = MaterialTheme.shapes.medium
+        modifier = modifier.fillMaxWidth().height(50.dp),
+        shape = MaterialTheme.shapes.medium,
+        textStyle = MaterialTheme.typography.bodySmall // Smaller text
     )
 }
 
@@ -115,8 +116,9 @@ fun PasswordTextField(
         isError = isError,
         singleLine = true,
         enabled = enabled,
-        modifier = modifier.fillMaxWidth(),
-        shape = MaterialTheme.shapes.medium
+        modifier = modifier.fillMaxWidth().height(50.dp),
+        shape = MaterialTheme.shapes.medium,
+        textStyle = MaterialTheme.typography.bodySmall // Smaller text
     )
 }
 
@@ -168,7 +170,7 @@ fun SocialSignInButton(
         onClick = onClick,
         modifier = modifier
             .fillMaxWidth()
-            .height(56.dp),
+            .height(42.dp), // Reduced from 56.dp
         shape = MaterialTheme.shapes.medium,
         colors = ButtonDefaults.outlinedButtonColors(
             contentColor = MaterialTheme.colorScheme.onSurface
