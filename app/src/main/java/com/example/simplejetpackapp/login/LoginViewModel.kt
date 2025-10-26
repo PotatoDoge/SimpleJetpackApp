@@ -54,4 +54,8 @@ class LoginViewModel : ViewModel() {
             isLoading = false
         }
     }
+
+    fun logout() {
+        _isAuthenticated.value = false
+    }
 }

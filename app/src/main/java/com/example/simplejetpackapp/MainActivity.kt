@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -14,6 +16,7 @@ import com.example.simplejetpackapp.login.LoginScreen
 import com.example.simplejetpackapp.login.LoginViewModel
 import com.example.simplejetpackapp.ui.theme.SimpleJetpackAppTheme
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class) // Needed for calculateWindowSizeClass
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,13 +26,23 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = androidx.compose.material3.MaterialTheme.colorScheme.background
                 ) {
-                    val loginViewModel: LoginViewModel = viewModel()
+                    // Get the window size class
+                    val windowSizeClass = calculateWindowSizeClass(this)
 
+                    val loginViewModel: LoginViewModel = viewModel()
                     val isAuthenticated by loginViewModel.isAuthenticated.collectAsState()
 
                     if (isAuthenticated) {
-                        DashboardScreen()
+                        // User is logged in, show the main app shell
+                        DashboardScreen(
+                            windowSizeClass = windowSizeClass.widthSizeClass,
+                            // Pass the logout function as a lambda
+                            onLogout = {
+                                loginViewModel.logout()
+                            }
+                        )
                     } else {
+                        // User is not logged in, show the login screen
                         LoginScreen(viewModel = loginViewModel)
                     }
                 }
