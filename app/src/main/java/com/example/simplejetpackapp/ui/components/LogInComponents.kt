@@ -67,7 +67,7 @@ fun LoginTextField(
         isError = isError,
         singleLine = true,
         enabled = enabled,
-        modifier = modifier.fillMaxWidth().height(50.dp),
+        modifier = modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.medium,
         textStyle = MaterialTheme.typography.bodySmall // Smaller text
     )
@@ -116,7 +116,7 @@ fun PasswordTextField(
         isError = isError,
         singleLine = true,
         enabled = enabled,
-        modifier = modifier.fillMaxWidth().height(50.dp),
+        modifier = modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.medium,
         textStyle = MaterialTheme.typography.bodySmall // Smaller text
     )
